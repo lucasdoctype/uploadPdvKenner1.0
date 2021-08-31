@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content">
+    <div class="container">
         <h4>Cadastro de Produtos</h4>
 
         <form class="form-product" action="/products" method="post" onSubmit="registerProduct(event)">
@@ -20,8 +20,8 @@
                     <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{name}}"/>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Preço de venda *</label>
-                    <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda" value="{{salePrice}}"/>
+                    <label class="form-label">Preço de venda em R$ - (BRL) *</label>
+                    <input class="form-control" id="money" type="text" name="salePrice" placeholder="Preço de venda" value="{{salePrice}}"/>
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Quantidade *</label>
