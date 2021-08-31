@@ -18,24 +18,34 @@
             </div>
         </div>
 
-        <form class="search" action="/salesdates" method="post">
-            <div class="row">            
-                <div class="col-md-4">
-                    <label for="startDate" class="form-label">Data Inicial</label>
-                    <input id="startDate" value="{{startDate}}" class="form-control" type="date" name="startDate" />
-                </div>
-                <div class="col-md-4">
-                    <label for="finalDate" class="form-label">Data final</label>
-                    <input id="finalDate" value="{{finalDate}}" class="form-control" type="date" name="finalDate" />
-                    </div>
-                <div class="col-md-4">
-                    <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
-                    {% if dateFilter != false %}
-                        <a href="/sales" class="btn btn-secondary">Limpar</a>
-                    {% endif %}
+
+
+        <form class="needs-validation" action="/salesdates" method="post" >
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Data Inicial</label>
+                <input type="date" class="form-control" value="{{startDate}}" id="startDate"  name="startDate">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Data Final</label>
+                <input type="date" id="finalDate" value="{{finalDate}}" name="finalDate" class="form-control">
+              </div>
+            </div>
+            <div class="row justify-content-end ">
+                <div class="col-md-5 mr-3 ">
+                    <button class="btn btn-primary " type="submit">Pesquisar</button>
                 </div>
             </div>
-        </form>
+            {% if dateFilter != false %}
+            <div class="row justify-content-end">
+                <div class="col-md-5  mr-3 ">
+                        <a href="/sales" class="btn btn-dark ">Limpar</a>
+                </div>
+            </div>
+                {% endif %}
+          </form>
+        
+
 
         <div class="row box-sale-row">
             {% for sale in sales %}
@@ -82,6 +92,9 @@
         }
     }
 </script>
+
+
+
 {% endblock %}        
 
         
