@@ -1,0 +1,51 @@
+Bem-vindo ao PDV 1.0!
+
+
+Fala Dev! Tranquilo?
+
+Para inicar este projeto primeirametne você deve instalar todas as dependências 
+dele e posteriormente configurar a variável global para acessar o banco de dados
+
+
+Etapa 1 -
+
+Abra o Node.js pelo cmd do Windows e acesese o diretório do projeto.
+Digite o comando "yarn" para poder instalar todas as dependências .
+
+Obs: Se você tiver o git bash instalado em seu computador é só clicar com o 
+botão direito na raiz do projeto e digitar o comando pelo próprio Git Bash
+
+Etapa 2 - 
+
+Crie um arquivo na raiz do projeto com o nome : .env
+
+Abra o arquivo .env por um editor de texto e digite o comando :
+DB_URL=mongodb://localhost:27017/sistema
+
+Etapa 3 -
+
+Crie uma base de dados no MongoDb com as seguintes especificaçôes
+
+Database Name: sistema
+Collection Name : users
+
+Etapa 4 -
+
+Na pasta src , abra o arquivo routes.js com o editor de texto e comente a linha
+
+routes.use(middleware)
+
+isso possibilitará o acesso as rotas sem a necessidade de uma autenticação de usuário
+dessa forma você poderá acessar todos os recursos sem estar logado ou até mesmo precisar 
+cadastrar-se no sistema.
+
+Etapa 5 -
+
+Digite "yar dev" para poder rodar o projeto no servidor local.
+Por padrão configurei ele para rodar na porta 3002, então em seu navegador
+basta digitar localhost:3002
+
+Pronto!
+
+Qualquer dúvida entre em contato comigo
+
