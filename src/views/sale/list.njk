@@ -2,22 +2,31 @@
 
 {% block head %}
     <title>Detalhes de Vendas</title>
-    <link rel="stylesheet" href="/sale.css"/>
+    
 {% endblock %}
 
 {% block content %}
-    <div class="container  card  shadow p-3 mb-5 bg-white rounded">
+    <div class="container mt-5 card  shadow p-3 mb-5 bg-white rounded">
         <div class="card-body">
 
 
         <div class="row">
             <div class="col-md-6">
                 <h4>Vendas</h4>
+                <hr>
             </div>
-            <div class="col-md-6 box-balance">
-                <strong class="sales">Vendas: {{ sales.length }} </strong>
-                <strong class="balance">Total: {{ total }}</strong>
+
+            <div class="col-2 offset-4">
+                <div class="card">
+                    <div class="card-body bg-dark text-white rounded shadow-sm p-3 ">
+                        <strong class="text-white">Vendas: </strong> 
+                        <strong class="text-white "> {{ sales.length }} </strong><br><hr>
+                        <strong class="text-white" >Lucro :</strong>
+                        <strong class="rounded p-1 bg-white text-success" >{{ total }}</strong>
+                    </div>
+                </div>
             </div>
+         
         </div>
 
 
@@ -34,7 +43,7 @@
               </div>
             </div>
             <div class="row justify-content-end ">
-                <div class="col-md-5 mr-3 ">
+                <div class="col-md-5 mr-4 ">
                     <button class="btn btn-primary " type="submit">Pesquisar</button>
                 </div>
             </div>
@@ -49,11 +58,22 @@
         
 
 
-        <div class="row box-sale-row">
+        <div class="row mt-5">
             {% for sale in sales %}
                 {% if sale != null %}
                     <div class="box-sale col-md-3">
                         <div class="header"> 
+
+                                   
+                        {% for product in sale.sale.products %}
+                        <div class="data-product">
+                            <strong>Nome:{{product.product.name }}</strong> <br>
+                            <strong>QTD: {{product.quantity}}</strong> <br>
+                            <strong>Valor: {{product.formattedPrice}}</strong>
+                        </div>  
+                    
+                         {% endfor %}
+
                             <div class="">
                                 <strong class="data">{{ sale.formattedDate }}</strong>
                             </div>
@@ -67,20 +87,13 @@
                             <strong>Desconto: {{sale.sale.descount}} %</strong>
                         </div>
 
+                        
+                 
                         <div class="row box-button">
                             <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST" onSubmit="deleteSale(event)">
                                 <button class="btn btn-danger button-delete">Deletar</button>
                             </form>
                         </div>
-                        
-                        {% for product in sale.sale.products %}
-                                <div class="data-product">
-                                    <strong>{{product.product.name}}</strong>
-                                    <strong>QTD: {{product.quantity}}</strong>
-                                    <strong>Valor: {{product.formattedPrice}}</strong>
-                                </div>  
-                            
-                        {% endfor %}
                     </div>
                 {% endif %}
             {% endfor %}
