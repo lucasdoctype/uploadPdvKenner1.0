@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container mt-5 card  shadow p-3 mb-5 bg-white rounded">
+    <div class="container mt-5 card  shadow p-3  bg-white rounded">
         <div class="card-body">
 
 
@@ -49,50 +49,53 @@
             </div>
             {% if dateFilter != false %}
             <div class="row justify-content-end">
-                <div class="col-md-5  mr-3 ">
+                <div class="col-md-5 mr-4 mt-3 ">
                         <a href="/sales" class="btn btn-dark ">Limpar</a>
                 </div>
             </div>
                 {% endif %}
           </form>
-        
 
 
-        <div class="row mt-5">
+
+        <div class="row mt-5 ">
             {% for sale in sales %}
                 {% if sale != null %}
-                    <div class="box-sale col-md-3">
-                        <div class="header"> 
+                    <div class="box-sale shadow p3 col-md-3 card bg-dark text-white">
+                        <div class=" card-body  header"> 
 
                                    
                         {% for product in sale.sale.products %}
-                        <div class="data-product">
-                            <strong>Nome:{{product.product.name }}</strong> <br>
-                            <strong>QTD: {{product.quantity}}</strong> <br>
-                            <strong>Valor: {{product.formattedPrice}}</strong>
+                        <div class=" ">
+                            <h6 >Nome : {{product.product.name }}</h6>
+                            <h6 >Quantidade : {{product.quantity}}</h6> 
+                            <h6>Valor : {{product.formattedPrice}}</h6>
+                            <h6>Desconto : {{sale.sale.descount}} %</h6>
                         </div>  
                     
                          {% endfor %}
 
                             <div class="">
-                                <strong class="data">{{ sale.formattedDate }}</strong>
+                                <h6 class="data">Data : {{ sale.formattedDate }}</h6>
                             </div>
                         
                             <div class="total">
-                                <strong>Total: {{ sale.sale.formattedTotal }}</strong>
+                                <h6>Total: {{ sale.sale.formattedTotal }}</h6>
                             </div>
                         </div>
 
-                        <div class="box-descount">
-                            <strong>Desconto: {{sale.sale.descount}} %</strong>
-                        </div>
+                    
+                         
+                    
 
                         
                  
-                        <div class="row box-button">
-                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST" onSubmit="deleteSale(event)">
-                                <button class="btn btn-danger button-delete">Deletar</button>
-                            </form>
+                        <div class="row ">
+                            <div class="col-5 offset-7 mb-3  ">
+                                <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST" onSubmit="deleteSale(event)">
+                                    <button class="btn btn-danger ">Deletar</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 {% endif %}
