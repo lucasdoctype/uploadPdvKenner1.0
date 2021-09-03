@@ -9930,9 +9930,10 @@ a:focus {
 }
 
 .bg-gradient-danger {
-  background-color: #e74a3b;
+  background-color:  #e74a3b;
   background-image: linear-gradient(180deg, #e74a3b 10%, #be2617 100%);
   background-size: cover;
+  
 }
 
 .bg-gradient-light {
@@ -11279,3 +11280,14 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.field-icon {
+  float: right;
+  margin-left: 30px;
+  margin-top: -39px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 2;
+  }
+
+

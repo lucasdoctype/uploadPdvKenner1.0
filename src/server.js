@@ -25,13 +25,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 
+
+
+
+
 nunjucks.configure(path.resolve(__dirname, "views"), {
   watch: true,
   express: app,
   autoescape: true,
 });
 
+
+
+
 app.set("view engine", "njk");
 app.use(require("./routes"));
+
+
+
+
 
 app.listen(process.env.PORT || 3002);
