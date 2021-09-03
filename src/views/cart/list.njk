@@ -2,7 +2,6 @@
 
     {% block head %}
         <title>Vendas</title>
-        
         <script src="/js/validateForm.js"></script>
     {% endblock %}
 
@@ -50,8 +49,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
-       
                                 <tr>
                                     <td>{{ product.name }}</td>
                                     <td>{{ product.salePrice}}</td>
@@ -108,109 +105,22 @@
             </div>
         </div>
         {% endfor %}
-        <span></span>
-
-
-       
-
-
-    
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-
-        <div class="container  card  shadow p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-            
-            <div class="mb-4">
-                <h4>Frente de Caixa</h4>
-                <hr>
-            </div>
-            <form action="/cart" name="myForm"  method="post" class="search" onsubmit="return validateForm()">
-                <input class="form-control" id="codigoProduto" type="text" placeholder="Código do produto" name="searchBarcode" value="{{searchBarcode}}" autofocus />
-                <input class="form-control" id="nomeProduto"type="text" placeholder="Nome do produto" name="nome" />
-                <button type="submit" class="btn btn-primary" id="button">Pesquisar</button>
-            </form>
-
-            {% for product in products %}
-            <table class="table table-bordered table-dark">
-                <tr>
-                    <th>Nome</th>
-                    <th>Preço</th>
-                    <th>Ação</th>
-                </tr>
-                        <tr>
-                            <td>{{ product.name }}</td>
-                            <td>{{ product.salePrice}}</td>
-                            <td>
-                                <form action="/cart/add-one/{{product._id}}" method="post">
-                                    <button type="submit" class="btn btn-primary">Adicionar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
-                    {% endfor %}
-
-            <div class="items mt-5">
-                {% for item in cart.items %}
-                    <div class="item">
-                        <a href="/products/{{item.product._id}}">
-                            <span class="title">{{item.product.name}}</span>
-                        </a>
-
-                        <span class="quantity">QTD: {{item.quantity}}</span>
-
-                        <span class="price">Valor: {{item.formattedPrice}}</span>
-
-                        <div class="quantity-control">
-                            <form action="/cart/remove-one/{{item.product._id}}" method="post">
-                                <button class="remove"><i class="fas fa-minus-square"></i></button>
-                            </form>
-
-                            <form action="/cart/add-one/{{item.product._id}}" method="post">
-                                <button type="submit"> <i class="fas fa-plus"></i> </button>
-                            </form>
-                        </div>
-
-                        <form class="trash" action="/cart/delete/{{item.product._id}}" method="POST">
-                            <button class="delete"><i class="fas fa-trash-alt"></i> </button>
-                        </form>
-                    </div>
-                    
-                {% endfor %}
-
-                
-                <div class="total">
-                    <p>Total:</p> 
-                    <span>{{cart.total.formattedPrice}}</span>
+        
+        <div>
+            <form class="form-group" action="/sales" method="POST">
+                <label for="">Desconto:</label>
+                <div class=" mb-3">
+                    <input  class="form-control"type="text" placeholder="%" name="descount"/>
                 </div>
-                
-                    <form  action="/sales" method="POST">
-
-                        <div class="descount">
-                            <input type="text" placeholder="Desconto" name="descount"/>
-                        </div>
-
-                        <div class="finish">
-                        <button class="btn btn-success"> Finalizar Venda </button>
-                    </form>
-
-                            <form  action="/sales/deleteall?_method=DELETE" method="POST">
-                                <button class="btn btn-danger"> Cancelar Venda </button>
-                            </form>
-                        </div>
-            </div>
+                <button class="btn btn-success btn-block" type="submit">Finalizar Venda</button>
+            </form>
+            <form class="form-group" action="/sales/deleteall?_method=DELETE" method="POST">
+                <button class="btn btn-danger btn-block" type="submit">Cancelar Venda</button>
+            </form>
         </div>
-        </div> -->
+        <div >
+          
+        </div>
 
         
     {% endblock %}

@@ -2,18 +2,23 @@
 
 {% block head %}
     <title>Saídas</title>
-    <link rel="stylesheet" href="/exit.css"/>
+    
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-          <div class="row">
-            <div class="col-md-6">
-                <h4>Saídas</h4>
+    <div class="container card mt-5">
+          <div class="row card-body">
+            <div class="col">
+                <h4 class="card-title">Saídas</h4>
+                <hr>
             </div>
-            <div class="col-md-6 box-balance">
-                <strong class="sales">Saídas: {{ exits.length }} </strong>
-                <strong class="balance">Total: {{ total }}</strong>
+            <div class="card">
+                <div class="card-body rounded shadow-sm p-3 ">
+                    <strong >Saídas: </strong> 
+                    <strong > {{ exits.length }} </strong><br><hr>
+                    <strong  >Total :</strong>
+                    <strong class="rounded p-1 bg-white text-success" >{{ total }}</strong>
+                </div>
             </div>
         </div>
         <form class="cad" action="/exits" method="post">
@@ -31,9 +36,9 @@
                     <label class="form-label">Data *</label>
                     <input class="form-control" type="date" name="date" placeholder="Data" value="{{date}}"/>
                 </div>
-                 <div class="col-md-3">
+                 <div class="col-md-3 mb-5">
                  <br/>
-                    <button class="btn btn-primary bnt-exit"  type="submit">Salvar</button>
+                    <button class="btn btn-primary bnt-exit mt-2"  type="submit">Salvar</button>
                 </div>
             </div>
         </form>
@@ -51,7 +56,7 @@
                     <input id="finalDate" value="{{finalDate}}" class="form-control" type="date" name="finalDate" />
                     </div>
                 <div class="col-md-4">
-                    <button class="btn btn-primary bnt-exit" type="submit">Pesqussssisar</button>
+                    <button class="btn btn-primary bnt-exit mt-4" type="submit">Pesquisar</button>
                     {% if dateFilter != false %}
                         <a href="/exits" class="btn btn-secondary">Limpar</a>
                     {% endif %}
@@ -59,7 +64,7 @@
             </div>
         </form>
 
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover mt-5">
             <tr>
                 <th>Descrição da Dispesa</th>
                 <th>Valor</th>
@@ -67,7 +72,7 @@
                 <th>Ação</th>
             </tr>
             {% for exit in exits %}
-                <tr>
+                <tr class="table-danger text-danger">
                     <td>{{ exit.descriptionExit }}</td>
                     <td>{{ exit.formattedValue }}</td>
                     <td>{{ exit.formattedDate }}</td>

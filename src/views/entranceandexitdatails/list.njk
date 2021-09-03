@@ -1,12 +1,13 @@
 {% extends "layout.njk" %}
 {% block head %}
     <title>Entradas e Saídas</title>
-     <link rel="stylesheet" href="/entranceandexitdetails.css"/>
+     
 {% endblock %}
 
 {% block content %}
-<div class="content">
+<div class="container card mt-5 shadow p-3">
     <h4>Detalhes de Entrada e Saída</h4>
+     <hr>
 
     <form class="search" action="/entrancesandexitsdatailsdates" method="post">
         <div class="row">            
@@ -19,29 +20,26 @@
                 <input id="finalDate" value="{{finalDate}}"  class="form-control" type="date" name="finalDate" />
             </div>
             <div class="col-md-4">
-                <button class="btn btn-primary" type="submit">Pesquisar</button>
+                <button class="btn btn-primary mt-4" type="submit">Pesquisar</button>
                 {% if dateFilter != false %}
-                    <a href="/entrancesandexitsdatails" class="btn btn-secondary">Limpar</a>
+                    <a href="/entrancesandexitsdatails" class="btn btn-secondary mt-4">Limpar</a>
                 {% endif %}
             </div>
         </div>
     </form>
 
-     <div class="row">            
-            <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Entradas</label>
-                <br/>
-                <strong href="#" class="data entrance">{{totalEntrance}}</strong>
+     <div class="row mt-5">            
+            <div class="col-md-4 card bg-success text-white">
+                <label  class="form-label label-data">Entradas:</label>
+                <strong  >{{totalEntrance}}</strong>
             </div>
-            <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Saídas</label>
-                <br/>
-                <strong href="#" class="data exit">{{totalExit}}</strong>
+            <div class="col-md-4 card bg-danger text-white">
+                <label  class="form-label label-data">Saídas:</label>
+                <strong  >{{totalExit}}</strong>
             </div>
-            <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Saldo</label> 
-                <br/>
-                <strong href="#" class="data balance">{{balance}}</strong>
+            <div class="col-md-4 bg-info text-white card">
+                <label  >Saldo:</label> 
+                <strong  class="data balance">{{balance}}</strong>
             </div>
         </div>
 </div>    
